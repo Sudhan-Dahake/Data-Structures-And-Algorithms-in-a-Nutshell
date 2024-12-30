@@ -7,7 +7,7 @@ AVL::AVL() {
 };
 
 AVL::~AVL() {
-	this->deleteWholeTree(&this->root)
+	this->deleteWholeTree(&this->root);
 };
 
 void AVL::deleteWholeTree(Node** ptrToRoot) {
@@ -15,9 +15,9 @@ void AVL::deleteWholeTree(Node** ptrToRoot) {
 		return;
 	};
 
-	deleteWholeTree((*ptrToRoot)->left);
+	deleteWholeTree(&((*ptrToRoot)->left));
 
-	deleteWholeTree((*ptrToRoot)->right);
+	deleteWholeTree(&((*ptrToRoot)->right));
 
 	(*ptrToRoot)->left = nullptr;
 	(*ptrToRoot)->right = nullptr;
@@ -51,15 +51,15 @@ bool AVL::updateHeightAlongPath(int key, Node** temp) {
 
 
 	if ((*temp)->left == nullptr) {
-		(*temp)->height = 1 + max(0, (*temp)->right->height);
+		(*temp)->height = 1 + std::max(0, (*temp)->right->height);
 	}
 
 	else if ((*temp)->right == nullptr) {
-		(*temp)->height = 1 + max((*temp)->left->height, 0);
+		(*temp)->height = 1 + std::max((*temp)->left->height, 0);
 	}
 
 	else {
-		(*temp)->height = 1 + max((*temp)->left->height, (*temp)->right->height);
+		(*temp)->height = 1 + std::max((*temp)->left->height, (*temp)->right->height);
 	};
 
 	return true;
@@ -73,18 +73,71 @@ int AVL::balanceFactor(Node** ptrToNode) {
 };
 
 
-Node* AVL::rightRotate(Node**) {
+Node* AVL::rightRotate(Node** currentHead) {
+	if ((currentHead == nullptr) || ((*currentHead) == nullptr) || ((*currentHead)->left == nullptr)) {
+		return nullptr;
+	};
+
+	// Performing Right Rotation.
+	Node* newHead = (*currentHead)->left;
+
+	(*currentHead)->left = newHead->right;
+
+	newHead->right = (*currentHead);
+
+
+	// updating the heights.
+	(**currentHead).height = (((*currentHead)->left == nullptr) && ((*currentHead)->right == nullptr)) ? 0 : (1 + std::max(((*currentHead)->left ? (*currentHead)->left->height : 0), ((*currentHead)->right ? (*currentHead)->right->height : 0)));
+
+	newHead->height = ((newHead->left == nullptr) && (newHead->right == nullptr)) ? 0 : (1 + std::max((newHead->left ? newHead->left->height : 0), (newHead->right ? newHead->right->height : 0)));
+
+
+	return newHead;
+};
+
+Node* AVL::leftRotate(Node** currentHead) {
+	if ((currentHead == nullptr) || (*currentHead == nullptr) || ((*currentHead)->right == nullptr)) {
+		return nullptr;
+	};
+
+	// Performing Left Rotation.
+	Node* newHead = (*currentHead)->right;
+
+	(*currentHead)->right = newHead->left;
+
+	newHead->left = (*currentHead);
+
+
+	// updating the heights.
+	(**currentHead).height = (((*currentHead)->left == nullptr) && ((*currentHead)->right == nullptr)) ? 0 : (1 + std::max(((*currentHead)->left ? (*currentHead)->left->height : 0), ((*currentHead)->right ? (*currentHead)->right->height : 0)));
+
+	newHead->height = ((newHead->left == nullptr) && (newHead->right == nullptr)) ? 0 : (1 + std::max((newHead->left ? newHead->left->height : 0), (newHead->right ? newHead->right->height : 0)));
+
+
+	return newHead;
+};
+
+Node* AVL::leftRightRotate(Node** currentHead) {
+	if ((currentHead == nullptr) || (*currentHead == nullptr)) {
+		return nullptr;
+	};
+
+	// Performing Left Rotation on Node's Left Child.
+	(*currentHead)->left = this->leftRotate(&((*currentHead)->left));
+
+	// Performing Right Rotation on currentHead.
+	return this->rightRotate(currentHead);
 
 };
 
-Node* AVL::leftRotate(Node**) {
+Node* AVL::rightLeftRotate(Node** currentHead) {
+	if ((currentHead == nullptr) || (*currentHead == nullptr)) {
+		return nullptr;
+	};
 
-};
+	// Performing Right Rotation on Node's Right Child.
+	(*currentHead)->right = this->rightRotate(&((*currentHead)->right));
 
-Node* AVL::leftRightRotate(Node**) {
-
-};
-
-Node* AVL::rightLeftRotate(Node**) {
-
+	// Performing Left Rotation on currentHead.
+	return this->leftRotate(currentHead);
 };
