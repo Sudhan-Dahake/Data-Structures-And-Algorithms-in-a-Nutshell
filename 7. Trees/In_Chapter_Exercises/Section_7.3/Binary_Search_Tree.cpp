@@ -283,4 +283,4 @@ int BST::getMaxDepth(Node** triplePtrToNode) {
 	if ((*triplePtrToNode) == nullptr) return 0;
 
 	return 1 + std::max(getMaxDepth(&((*triplePtrToNode)->leftChild)), getMaxDepth(&((*triplePtrToNode)->rightChild)));
-}
+};
