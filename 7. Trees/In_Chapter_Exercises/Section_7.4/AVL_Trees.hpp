@@ -16,9 +16,15 @@ public:
 
 	bool insert(Node**);
 
-	bool deleteNode(Node**);
+	Node* deleteNode(Node* temp = nullptr, int key = 0);
 
 	Node* search(int);
+
+	Node* findMin(Node** node = nullptr);
+
+	Node* findMax(Node** node = nullptr);
+
+	void printTree();
 
 private:
 	void deleteWholeTree(Node**);
@@ -26,6 +32,8 @@ private:
 	int returnHeightOfNode(Node**);
 
 	int balanceFactor(Node**);
+
+	bool updateHeight(Node**);
 
 	bool updateHeightAlongPath(int, Node**);
 
@@ -36,4 +44,10 @@ private:
 	Node* leftRightRotate(Node**);
 
 	Node* rightLeftRotate(Node**);
+
+	Node* RecursiveInsertionAndBalancing(Node*, Node*);
+
+	void printTreeByLevel(Node**);
+
+	int getMaxDepth(Node**);
 };
