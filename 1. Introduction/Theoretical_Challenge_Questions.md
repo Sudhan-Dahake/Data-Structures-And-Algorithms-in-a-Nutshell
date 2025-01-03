@@ -12,7 +12,7 @@ Label each of the following as T (True) or F (False). A data structure in the ob
 ```
 
 ```
-__(a) can be used to organize a collection of objects.__
+**(a) can be used to organize a collection of objects.**
 True - In the object-oriented context, data structures like array, lists, sets, map, or even custom classes are often used
 to organize and manage collections of objects. They help store and manipulate objects efficiently, making them integral
 to organizing data in OOP.
