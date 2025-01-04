@@ -20,4 +20,21 @@ cout << "(*c)=" << (*c) << endl;
 cout << "(**c)=" << (**c) << endl;
 ```
 
-![Alt text](images/Solution_1.jpg)
+![Blocks depicting varibles](images/Solution_1.jpg)
+
+
+### Question 2
+
+```
+Draw the node structure resulting from the following code:
+
+Node* n1 = new Node();
+Node* n2 = new Node();
+Node* n3 = new Node();
+
+n1->next = n3; n3->prev = n1;
+n3->next = n2; n2->prev = n3;
+n2->next = n1->next->next->prev;
+```
+
+![Visual representation of the three nodes](images/Solution_2.jpg)
