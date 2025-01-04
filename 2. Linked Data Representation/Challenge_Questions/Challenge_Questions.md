@@ -8,11 +8,15 @@ Draw the node structures of variables a, b, and c with their value and memory ad
 int a = 1;
 int *b = &a;
 int **c = &b;
-int **d = b;
+int *d = b;
 
 cout << "a=" << a << endl;
-cout << "*b=" << *b << endl;
-cout << "**c=" << **c << endl;
+cout << "(*c)=" << (*c) << endl;
+c = &d;
+(**c) = 3
+
+cout << "(*b)=" << (*b) << endl;
+cout << "(*c)=" << (*c) << endl;
 cout << "(**c)=" << (**c) << endl;
 ```
 
