@@ -38,3 +38,26 @@ n2->next = n1->next->next->prev;
 ```
 
 ![Visual representation of the three nodes](images/Solution_2.jpg)
+
+
+### Question 3
+
+```
+Assume you have the following function that creates and inserts a node given a value
+before the element at a specified position in the list:
+
+void InsertValue(LinkedList* list, DataType_t val, int position);
+
+Note that a position of 0 inserts it at the start. Draw the resulting doubly linked list
+in each of the following steps:
+
+LinkedList* list = new LinkedList;
+InsertValue(list, 1, 0);
+InsertValue(list, 2, 0);
+InsertValue(list, 3, 1);
+InsertValue(list, 4, 0);
+InsertValue(list, 5, 3);
+delete list;
+```
+
+![Visual representation of Linked List after Each Insertion and Deletion Operation](images/Solution_3.jpg)
