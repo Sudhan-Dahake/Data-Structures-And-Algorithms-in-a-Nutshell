@@ -1,6 +1,6 @@
-'''
+```
 Do we need to keep a tail pointer in the ADT?
-'''
+```
 
 For singly linked lists, maintaining a tail pointer is not strictly mandatory;
 its necessity depends on the specific use case and the developer's requirements.
