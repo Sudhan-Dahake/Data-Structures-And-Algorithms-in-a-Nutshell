@@ -1,4 +1,4 @@
-## Question
+# Question
 
 ```
 Consider the following recursive relation:
@@ -11,7 +11,7 @@ Consider the following recursive relation:
 (b) Write the call trace to evaluate F(8).
 ```
 
-## Solution
+# Solution
 
 (a) Diagram showing the above call tree.
 ![Diagram of a call tree](Images/Call_Tree.png)
@@ -28,7 +28,7 @@ F(8) = F(4) + F(6)      {This is using -> F(n) = F(n/2) + F(n - 2)}
      = 0
 ```
 
-# NOTE
+## NOTE
 The calculation F(3/2) = F(1) occurs because in the recursive relation F(n),
 the term F(n/2) implies **integer division** (truncation of the result to an integer),
 not floating-point division.
