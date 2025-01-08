@@ -14,7 +14,7 @@ Consider the following recursive relation:
 ## Solution
 
 (a) Diagram showing the above call tree.
-![Diagram of a call tree](images/Call_Tree.png)
+![Diagram of a call tree](Images/Call_Tree.png)
 
 (b) Call trace to evalaute F(8).
 
